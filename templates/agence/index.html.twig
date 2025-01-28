@@ -6,13 +6,13 @@
 <div class="container mx-auto py-8 px-4">
     <h1 class="text-3xl font-semibold text-center mb-6">Liste des Filières</h1>
     
-    {# Formulaire de filtre #}
-    {# <form method="get" action="{{ path('app_filiere_liste1') }}" class="mb-6">
-        {{ form_start(form, { 'attr': { 'class': 'flex gap-4 items-center' } }) }}
-            {{ form_row(form.libelle) }}
-            {{ form_widget(form.search, { 'attr': { 'class': 'bg-blue-500 text-white px-4 py-2 rounded' } }) }}
-        {{ form_end(form) }}
-    </form> #}
+   <form method="get">
+    {{ form_start(form) }}
+    {{ form_row(form.telephone) }}
+    {{ form_row(form.adresse) }}
+    <button type="submit">Rechercher</button>
+    {{ form_end(form) }}
+</form>
 
     {# Tableau des Filières #}
     <div class="overflow-x-auto shadow-md rounded-lg">
