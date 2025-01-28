@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Filières{% endblock %}
+
+{% block body %}
+<div class="container mx-auto py-8 px-4">
+    <h1 class="text-3xl font-semibold text-center mb-6">Liste des Filières</h1>
+    
+    {# Formulaire de filtre #}
+    {# <form method="get" action="{{ path('app_filiere_liste1') }}" class="mb-6">
+        {{ form_start(form, { 'attr': { 'class': 'flex gap-4 items-center' } }) }}
+            {{ form_row(form.libelle) }}
+            {{ form_widget(form.search, { 'attr': { 'class': 'bg-blue-500 text-white px-4 py-2 rounded' } }) }}
+        {{ form_end(form) }}
+    </form> #}
+
+    {# Tableau des Filières #}
+    <div class="overflow-x-auto shadow-md rounded-lg">
+        <table class="table-auto w-full text-sm text-left bg-white border-collapse">
+            <thead class="bg-blue-500 text-white">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-center">Numero</th>
+                    <th scope="col" class="px-6 py-3 text-center">Adresse</th>
+                    <th scope="col" class="px-6 py-3 text-center">Telephone</th>
+                    <th scope="col" class="px-6 py-3 text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for agence in agences %}
+                <tr class="hover:bg-gray-100">
+                    <td class="px-6 py-4 text-center">{{ agence.numero}}</td>
+                    <td class="px-6 py-4 text-center">{{ agence.adresse }}</td>
+
+                    <td class="px-6 py-4 text-center">{{ agence.telephone }}</td>
+                    <td class="px-6 py-4 text-center">
+                        <a href="" class="text-red-500 hover:underline">Supprimer</a>
+                        <span class="mx-2">|</span>
+                        <a href="" class="text-blue-500 hover:underline">Modifier</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {# Pagination #}
+   <div class="mt-6 text-center">
+    {{ knp_pagination_render(agences) }}
+</div>
+
+</div>
+{% endblock %}
